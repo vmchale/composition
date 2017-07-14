@@ -28,9 +28,13 @@ infixl 9 &
 infixl 9 &~
 infixl 9 &~~
 infixl 9 &~~~
+infixl 9 -.
 
 on : (a -> a -> b) -> (c -> a) -> (c -> c -> b)
 on op f = \x, y => op (f x) (f y)
+
+(-.) : (a -> b) -> (b -> c) -> (a -> c)
+(-.) f g = g . f
 
 ||| Instead of `f = \x, y => 2 * y + x`, consider `f = (*2) .* (+)`
 (.*) : (c -> d) -> (a -> b -> c) -> (a -> b -> d)
