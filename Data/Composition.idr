@@ -20,12 +20,14 @@ infixl 9 -.***
 infixl 9 -.****
 infixl 9 -.*****
 infixl 9 *.
+infixl 9 **.
+infixl 9 ***.
+infixl 9 ****.
+infixl 9 *****.
 infixl 9 &
 infixl 9 &~
 infixl 9 &~~
 infixl 9 &~~~
-
--- TODO investigate representations of S_n in Idris?
 
 on : (a -> a -> b) -> (c -> a) -> (c -> c -> b)
 on op f = \x, y => op (f x) (f y)
@@ -45,9 +47,6 @@ on op f = \x, y => op (f x) (f y)
 
 (.*****) : (g -> h) -> (a -> b -> c -> d -> e -> f -> g) -> (a -> b -> c -> d -> e -> f -> h)
 (.*****) f g = \u, v, w, x, y, z => f (g u v w x y z)
-
-(*.) : (a -> b -> c) -> (c -> d) -> (a -> b -> d)
-(*.) = flip (.*)
 
 (-.*) : (d -> b) -> (a -> b -> c) -> (a -> d -> c)
 (-.*) f g = \x, y => g x (f y)
@@ -75,3 +74,18 @@ on op f = \x, y => op (f x) (f y)
 
 (&~~~) : (a -> b -> c -> d -> e) -> d -> c -> b -> a -> e
 (&~~~) f = \w, x, y, z => f z y x w
+
+(*.) : (a -> b -> c) -> (c -> d) -> (a -> b -> d)
+(*.) = flip (.*)
+
+(**.) : (a -> b -> c -> d) -> (d -> e) -> (a -> b -> c -> e)
+(**.) = flip (.**)
+
+(***.) : (a -> b -> c -> d -> e) -> (e -> f) -> (a -> b -> c -> d -> f)
+(***.) = flip (.***)
+
+(****.) : (a -> b -> c -> d -> e -> f) -> (f -> g) -> (a -> b -> c -> d -> e -> g)
+(****.) = flip (.****)
+
+(*****.) : (a -> b -> c -> d -> e -> f -> g) -> (g -> h) -> (a -> b -> c -> d -> e -> f -> h)
+(*****.) = flip (.*****)
