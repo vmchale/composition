@@ -11,6 +11,7 @@ module Data.Composition
 
 infixl 9 .*
 infixl 9 .**
+infixl 9 .***
 infixl 9 -.*
 infixl 9 -.**
 
@@ -23,6 +24,9 @@ on op f = \x, y => op (f x) (f y)
 
 (.**) : (d -> e) -> (a -> b -> c -> d) -> (a -> b -> c -> e)
 (.**) f g = \x, y, z => f (g x y z)
+
+(.***) : (e -> f) -> (a -> b -> c -> d -> e) -> (a -> b -> c -> d -> f)
+(.***) f g = \w, x, y, z => f (g w x y z)
 
 (-.*) : (d -> b) -> (a -> b -> c) -> (a -> d -> c)
 (-.*) f g = \x, y => g x (f y)
