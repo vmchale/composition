@@ -36,13 +36,17 @@ infixl 9 .$
 on : (a -> a -> b) -> (c -> a) -> (c -> c -> b)
 on op f = \x, y => op (f x) (f y)
 
+||| Infix equivalent to 'on'
 (.$) : (a -> a -> b) -> a -> b
 (.$) f x = f x x
 
+||| Backwards function composition
 (-.) : (a -> b) -> (b -> c) -> (a -> c)
 (-.) f g = g . f
 
-||| Instead of `f = \x, y => 2 * y + x`, consider `f = (*2) .* (+)`
+||| Composition when one function has arity > 1 
+|||
+||| Instead of `f = \x, y => 2 * y + x`, we can write `f = (*2) .* (+)`
 (.*) : (c -> d) -> (a -> b -> c) -> (a -> b -> d)
 (.*) f g = \x, y => f (g x y)
 
@@ -58,6 +62,22 @@ on op f = \x, y => op (f x) (f y)
 (.*****) : (g -> h) -> (a -> b -> c -> d -> e -> f -> g) -> (a -> b -> c -> d -> e -> f -> h)
 (.*****) f g = \u, v, w, x, y, z => f (g u v w x y z)
 
+(*.) : (a -> b -> c) -> (c -> d) -> (a -> b -> d)
+(*.) = flip (.*)
+
+(**.) : (a -> b -> c -> d) -> (d -> e) -> (a -> b -> c -> e)
+(**.) = flip (.**)
+
+(***.) : (a -> b -> c -> d -> e) -> (e -> f) -> (a -> b -> c -> d -> f)
+(***.) = flip (.***)
+
+(****.) : (a -> b -> c -> d -> e -> f) -> (f -> g) -> (a -> b -> c -> d -> e -> g)
+(****.) = flip (.****)
+
+(*****.) : (a -> b -> c -> d -> e -> f -> g) -> (g -> h) -> (a -> b -> c -> d -> e -> f -> h)
+(*****.) = flip (.*****)
+
+||| Composition on the last argument rather than the return value
 (-.*) : (d -> b) -> (a -> b -> c) -> (a -> d -> c)
 (-.*) f g = \x, y => g x (f y)
 
@@ -73,6 +93,7 @@ on op f = \x, y => op (f x) (f y)
 (-.*****) : (h -> f) -> (a -> b -> c -> d -> e -> f -> g) -> (a -> b -> c -> d -> e -> h -> g)
 (-.*****) f g = \u, v, w, x, y, z => g u v w x y (f z)
 
+||| Backwards function application
 (&) : a -> (a -> b) ->  b
 (&) x f = f x
 
@@ -84,18 +105,3 @@ on op f = \x, y => op (f x) (f y)
 
 (&~~~) : (a -> b -> c -> d -> e) -> d -> c -> b -> a -> e
 (&~~~) f = \w, x, y, z => f z y x w
-
-(*.) : (a -> b -> c) -> (c -> d) -> (a -> b -> d)
-(*.) = flip (.*)
-
-(**.) : (a -> b -> c -> d) -> (d -> e) -> (a -> b -> c -> e)
-(**.) = flip (.**)
-
-(***.) : (a -> b -> c -> d -> e) -> (e -> f) -> (a -> b -> c -> d -> f)
-(***.) = flip (.***)
-
-(****.) : (a -> b -> c -> d -> e -> f) -> (f -> g) -> (a -> b -> c -> d -> e -> g)
-(****.) = flip (.****)
-
-(*****.) : (a -> b -> c -> d -> e -> f -> g) -> (g -> h) -> (a -> b -> c -> d -> e -> f -> h)
-(*****.) = flip (.*****)
