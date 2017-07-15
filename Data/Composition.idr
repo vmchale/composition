@@ -7,6 +7,8 @@
 ||| A bunch of function composition extras, inspired by the Haskell package of the same name.
 module Data.Composition
 
+%default total
+
 %access export
 
 infixl 9 .*
@@ -29,9 +31,13 @@ infixl 9 &~
 infixl 9 &~~
 infixl 9 &~~~
 infixl 9 -.
+infixl 9 .$
 
 on : (a -> a -> b) -> (c -> a) -> (c -> c -> b)
 on op f = \x, y => op (f x) (f y)
+
+(.$) : (a -> a -> b) -> a -> b
+(.$) f x = f x x
 
 (-.) : (a -> b) -> (b -> c) -> (a -> c)
 (-.) f g = g . f
