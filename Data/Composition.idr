@@ -77,10 +77,11 @@ on op f = \x, y => op (f x) (f y)
 (*****.) : (a -> b -> c -> d -> e -> f -> g) -> (g -> h) -> (a -> b -> c -> d -> e -> f -> h)
 (*****.) = flip (.*****)
 
-||| Composition on the last argument rather than the return value
+||| The Oedipus combinator
 (-.*) : (d -> b) -> (a -> b -> c) -> (a -> d -> c)
 (-.*) f g = \x, y => g x (f y)
 
+||| Composition on the last argument rather than the return value
 (-.**) : (e -> c) -> (a -> b -> c -> d) -> (a -> b -> e -> d)
 (-.**) f g = \x, y, z => g x y (f z)
 
