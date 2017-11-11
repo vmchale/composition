@@ -28,3 +28,8 @@ with
 ```
 f = (*2) .* +
 ```
+
+### Documentation
+
+You can find documentation
+[here](https://vmchale.github.io/composition/index.html).
