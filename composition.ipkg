@@ -3,4 +3,6 @@ package composition
 sourceloc  = git://git@github.com:vmchale/composition.git
 bugtracker = http://www.github.com/vmchale/composition/issues
 
+pkgs = hezarfen
+
 modules = Data.Composition

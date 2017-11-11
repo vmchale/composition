@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html><head><title>IdrisDoc: Data.Composition</title><link type="text/css" rel="stylesheet" href="../styles.css"></head><body class="namespace"><div class="wrapper"><header><strong>IdrisDoc</strong>: Data.Composition<nav><a href="../index.html">Index</a></nav></header><div class="container"><h1>Data.Composition</h1><p>A bunch of function composition extras, inspired by the Haskell package of the same name.</p>
+<dl class="decls"><dt id="Data.Composition.on"><span class="name function" title="Data.Composition.on">on</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span>) ->
+(<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">a</span>) ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">b</span></span></dt><dd></dd><dt id="Data.Composition..*****"><span class="name function" title="Data.Composition..*****">(.*****)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">g</span> ->
+<span class="implicit boundvar" title="">h</span>) ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">f</span> ->
+<span class="implicit boundvar" title="">g</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">f</span> ->
+<span class="implicit boundvar" title="">h</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition..****"><span class="name function" title="Data.Composition..****">(.****)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">f</span> ->
+<span class="implicit boundvar" title="">g</span>) ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">f</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">g</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition..***"><span class="name function" title="Data.Composition..***">(.***)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">f</span>) ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">f</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition..**"><span class="name function" title="Data.Composition..**">(.**)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span>) ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">e</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition..*"><span class="name function" title="Data.Composition..*">(.*)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span>) ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">d</span></span></dt><dd><p>Composition when one function has arity &gt; 1</p>
+<p>Instead of <code>f = \x, y =&gt; 2 * y + x</code>, we can write <code>f = (*2) .* (+)</code></p>
+<dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition..$"><span class="name function" title="Data.Composition..$">(.$)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span></span></dt><dd><p>Infix equivalent to 'on'</p>
+<dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.-.*****"><span class="name function" title="Data.Composition.-.*****">(-.*****)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">h</span> ->
+<span class="implicit boundvar" title="">f</span>) ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">f</span> ->
+<span class="implicit boundvar" title="">g</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">h</span> ->
+<span class="implicit boundvar" title="">g</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.-.****"><span class="name function" title="Data.Composition.-.****">(-.****)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">g</span> ->
+<span class="implicit boundvar" title="">e</span>) ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">f</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">g</span> ->
+<span class="implicit boundvar" title="">f</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.-.***"><span class="name function" title="Data.Composition.-.***">(-.***)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">f</span> ->
+<span class="implicit boundvar" title="">d</span>) ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">f</span> ->
+<span class="implicit boundvar" title="">e</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.-.**"><span class="name function" title="Data.Composition.-.**">(-.**)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">c</span>) ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">d</span></span></dt><dd><p>Composition on the last argument rather than the return value</p>
+<dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.-.*"><span class="name function" title="Data.Composition.-.*">(-.*)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">b</span>) ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">c</span></span></dt><dd><p>The Oedipus combinator</p>
+<dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.-."><span class="name function" title="Data.Composition.-.">(-.)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span>) ->
+(<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">c</span></span></dt><dd><p>Backwards function composition</p>
+<dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.*."><span class="name function" title="Data.Composition.*.">(*.)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span>) ->
+(<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">d</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.**."><span class="name function" title="Data.Composition.**.">(**.)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span>) ->
+(<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">e</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.***."><span class="name function" title="Data.Composition.***.">(***.)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span>) ->
+(<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">f</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">f</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.****."><span class="name function" title="Data.Composition.****.">(****.)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">f</span>) ->
+(<span class="implicit boundvar" title="">f</span> ->
+<span class="implicit boundvar" title="">g</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">g</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.*****."><span class="name function" title="Data.Composition.*****.">(*****.)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">f</span> ->
+<span class="implicit boundvar" title="">g</span>) ->
+(<span class="implicit boundvar" title="">g</span> ->
+<span class="implicit boundvar" title="">h</span>) ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span> ->
+<span class="implicit boundvar" title="">f</span> ->
+<span class="implicit boundvar" title="">h</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.&amp;~~~"><span class="name function" title="Data.Composition.&amp;~~~">(&amp;~~~)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">e</span>) ->
+<span class="implicit boundvar" title="">d</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">e</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.&amp;~~"><span class="name function" title="Data.Composition.&amp;~~">(&amp;~~)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">d</span>) ->
+<span class="implicit boundvar" title="">c</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">d</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.&amp;~"><span class="name function" title="Data.Composition.&amp;~">(&amp;~)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature">(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">c</span>) ->
+<span class="implicit boundvar" title="">b</span> ->
+<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">c</span></span></dt><dd><dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd><dt id="Data.Composition.&amp;"><span class="name function" title="Data.Composition.&amp;">(&amp;)</span><span class="word">&nbsp;:&nbsp;</span><span class="signature"><span class="implicit boundvar" title="">a</span> ->
+(<span class="implicit boundvar" title="">a</span> ->
+<span class="implicit boundvar" title="">b</span>) ->
+<span class="implicit boundvar" title="">b</span></span></dt><dd><p>Backwards function application</p>
+<dl><dt class="fixity">Fixity</dt><dd class="fixity" title="infixl 9">Left associative, precedence 9</dd></dl></dd></dl></div></div><footer>Produced by IdrisDoc version 1.0</footer></body></html>

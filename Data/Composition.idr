@@ -7,6 +7,10 @@
 ||| A bunch of function composition extras, inspired by the Haskell package of the same name.
 module Data.Composition
 
+import Hezarfen
+
+%language ElabReflection
+
 %default total
 
 %access export
@@ -34,75 +38,75 @@ infixl 9 -.
 infixl 9 .$
 
 on : (a -> a -> b) -> (c -> a) -> (c -> c -> b)
-on op f = \x, y => op (f x) (f y)
+on = %runElab hezarfenExpr
 
 ||| Infix equivalent to 'on'
 (.$) : (a -> a -> b) -> a -> b
-(.$) f x = f x x
+(.$) = %runElab hezarfenExpr
 
 ||| Backwards function composition
 (-.) : (a -> b) -> (b -> c) -> (a -> c)
-(-.) f g = g . f
+(-.) = %runElab hezarfenExpr
 
 ||| Composition when one function has arity > 1 
 |||
 ||| Instead of `f = \x, y => 2 * y + x`, we can write `f = (*2) .* (+)`
 (.*) : (c -> d) -> (a -> b -> c) -> (a -> b -> d)
-(.*) f g = \x, y => f (g x y)
+(.*) = %runElab hezarfenExpr
 
 (.**) : (d -> e) -> (a -> b -> c -> d) -> (a -> b -> c -> e)
-(.**) f g = \x, y, z => f (g x y z)
+(.**) = %runElab hezarfenExpr
 
 (.***) : (e -> f) -> (a -> b -> c -> d -> e) -> (a -> b -> c -> d -> f)
-(.***) f g = \w, x, y, z => f (g w x y z)
+(.***) = %runElab hezarfenExpr
 
 (.****) : (f -> g) -> (a -> b -> c -> d -> e -> f) -> (a -> b -> c -> d -> e -> g)
-(.****) f g = \v, w, x, y, z => f (g v w x y z)
+(.****) = %runElab hezarfenExpr
 
 (.*****) : (g -> h) -> (a -> b -> c -> d -> e -> f -> g) -> (a -> b -> c -> d -> e -> f -> h)
-(.*****) f g = \u, v, w, x, y, z => f (g u v w x y z)
+(.*****) = %runElab hezarfenExpr
 
 (*.) : (a -> b -> c) -> (c -> d) -> (a -> b -> d)
-(*.) = flip (.*)
+(*.) = %runElab hezarfenExpr
 
 (**.) : (a -> b -> c -> d) -> (d -> e) -> (a -> b -> c -> e)
-(**.) = flip (.**)
+(**.) = %runElab hezarfenExpr
 
 (***.) : (a -> b -> c -> d -> e) -> (e -> f) -> (a -> b -> c -> d -> f)
-(***.) = flip (.***)
+(***.) = %runElab hezarfenExpr
 
 (****.) : (a -> b -> c -> d -> e -> f) -> (f -> g) -> (a -> b -> c -> d -> e -> g)
-(****.) = flip (.****)
+(****.) = %runElab hezarfenExpr
 
 (*****.) : (a -> b -> c -> d -> e -> f -> g) -> (g -> h) -> (a -> b -> c -> d -> e -> f -> h)
-(*****.) = flip (.*****)
+(*****.) = %runElab hezarfenExpr
 
 ||| The Oedipus combinator
 (-.*) : (d -> b) -> (a -> b -> c) -> (a -> d -> c)
-(-.*) f g = \x, y => g x (f y)
+(-.*) = %runElab hezarfenExpr
 
 ||| Composition on the last argument rather than the return value
 (-.**) : (e -> c) -> (a -> b -> c -> d) -> (a -> b -> e -> d)
-(-.**) f g = \x, y, z => g x y (f z)
+(-.**) = %runElab hezarfenExpr
 
 (-.***) : (f -> d) -> (a -> b -> c -> d -> e) -> (a -> b -> c -> f -> e)
-(-.***) f g = \w, x, y, z => g w x y (f z)
+(-.***) = %runElab hezarfenExpr 
 
 (-.****) : (g -> e) -> (a -> b -> c -> d -> e -> f) -> (a -> b -> c -> d -> g -> f)
-(-.****) f g = \v, w, x, y, z => g v w x y (f z)
+(-.****) = %runElab hezarfenExpr 
 
 (-.*****) : (h -> f) -> (a -> b -> c -> d -> e -> f -> g) -> (a -> b -> c -> d -> e -> h -> g)
-(-.*****) f g = \u, v, w, x, y, z => g u v w x y (f z)
+(-.*****) = %runElab hezarfenExpr 
 
 ||| Backwards function application
 (&) : a -> (a -> b) ->  b
-(&) x f = f x
+(&) = %runElab hezarfenExpr
 
 (&~) : (a -> b -> c) -> b -> a -> c
-(&~) = flip
+(&~) = %runElab hezarfenExpr
 
 (&~~) : (a -> b -> c -> d) -> c -> b -> a -> d
-(&~~) f = \x, y, z => f z y x
+(&~~) = %runElab hezarfenExpr
 
 (&~~~) : (a -> b -> c -> d -> e) -> d -> c -> b -> a -> e
-(&~~~) f = \w, x, y, z => f z y x w
+(&~~~) = %runElab hezarfenExpr
